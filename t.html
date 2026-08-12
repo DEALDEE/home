@@ -126,23 +126,22 @@
 
 <script>
   (function() {
-    let fullPath = window.location.pathname + window.location.search;
-    
-    // ตัดเครื่องหมาย / ตัวแรกสุดออก (ถ้ามี)
+    // 1. อ่าน Path และ Query String ทั้งหมดจาก URL
+    let fullPath = window.location.pathname.substring(1) + window.location.search;
+
     if (fullPath.startsWith("/")) {
       fullPath = fullPath.substring(1);
     }
-    
-    // ถ้าเจอเครื่องหมาย & ให้ตัดข้อความตั้งแต่ & ตัวแรกออกไปเลย เพื่อตัดพวก fbclid ทิ้ง
+
+    // ตัดพวก facebook tracking ทิ้ง (ถ้ามี &)
     let ampersandIndex = fullPath.indexOf("&");
     if (ampersandIndex !== -1) {
       fullPath = fullPath.substring(0, ampersandIndex);
     }
-    
-    let combinedId = fullPath;
+
+    // 2. ส่งค่าไปที่ Google Apps Script
     let cacheBust = new Date().getTime();
-    
-    let link3 = "https://script.google.com/macros/s/AKfycbzBpW00CY0Y3X9ZkwtFXGi_Nyv5aOes1KmQkToF-GmPmAwAUb9PYpgnDlMl9h8nbZde/exec?seree=" + encodeURIComponent(combinedId) + "&cb=" + cacheBust;
+    let link3 = "https://script.google.com/macros/s/AKfycbzBpW00CY0Y3X9ZkwtFXGi_Nyv5aOes1KmQkToF-GmPmAwAUb9PYpgnDlMl9h8nbZde/exec?seree=" + encodeURIComponent(fullPath) + "&cb=" + cacheBust;
 
     let iframe = document.querySelector("#myFrame");
     let loadingDiv = document.querySelector("#loading");
@@ -152,10 +151,7 @@
       iframe.style.display = "block";
     };
 
-    let link = window.location.href;
-    if (!link.includes("dealdee.github.io/index.html")) {
-      iframe.setAttribute("src", link3);
-    }
+    iframe.setAttribute("src", link3);
   })();
 </script>
 
