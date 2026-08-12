@@ -2,7 +2,11 @@
   "rewrites": [
     { "source": "/home/t", "destination": "/t.html" },
     { "source": "/home/a", "destination": "/a.html" },
+    { "source": "/home/b", "destination": "/b.html" },
+    { "source": "/home/c", "destination": "/c.html" },
+    { "source": "/home/d", "destination": "/d.html" },
+    { "source": "/home/l", "destination": "/l.html" },
     { "source": "/home/(.*)", "destination": "/$1.html" },
-    { "source": "/(.*)", "destination": "/index.html" }
+    { "source": "/", "destination": "/index.html" }
   ]
 }
