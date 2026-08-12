@@ -1,11 +1,8 @@
 {
   "rewrites": [
-    { "source": "/t", "destination": "/t.html" },
-    { "source": "/a", "destination": "/a.html" },
-    { "source": "/b", "destination": "/b.html" },
-    { "source": "/c", "destination": "/c.html" },
-    { "source": "/d", "destination": "/d.html" },
-    { "source": "/l", "destination": "/l.html" },
-    { "source": "/home", "destination": "/index.html" }
+    { "source": "/home/t", "destination": "/t.html" },
+    { "source": "/home/a", "destination": "/a.html" },
+    { "source": "/home/(.*)", "destination": "/$1.html" },
+    { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
