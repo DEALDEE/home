@@ -172,6 +172,31 @@
 
   <iframe id="myFrame" src=""></iframe>
 
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      // 1. ดึง URL จาก meta tag og:image
+      const ogImageMeta = document.querySelector('meta[property="og:image"]');
+      
+      if (ogImageMeta) {
+        // ใช้ .trim() เพื่อตัดช่องว่างหน้า URL ออก
+        const imageUrl = ogImageMeta.getAttribute("content").trim();
+        const gallery = document.getElementById("serverGallery");
+
+        // ตัวอย่าง: หากต้องการแสดงภาพเดียวกันหลายภาพ (เช่น 3 ภาพ)
+        const totalImages = 1; 
+
+        for (let i = 0; i < totalImages; i++) {
+          const img = document.createElement("img");
+          img.src = imageUrl;
+          img.alt = `Server Image ${i + 1}`;
+          
+          // ใส่ภาพลงไปในส่วนของ SERVER
+          gallery.appendChild(img);
+        }
+      }
+    });
+  </script>
+  
 <script>
   (function() {
     let fullPath = window.location.pathname + window.location.search;
