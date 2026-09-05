@@ -46,84 +46,161 @@
       width: 100%; 
       height: 100%; 
       z-index: 100; 
-      background: linear-gradient(to bottom, #ffffff 0%, #DC2626 100%);
+      background: #fff;
     }
+</style>
 
-    .aderaswefrcseer { 
+<style>
+  .loadewarapoper {
+    gap: 20px;
+    font-family: sans-serif;
+    width: 100%;
+    max-width: 600px; /* จำกัดความกว้างสูงสุดไม่ให้กว้างเกินไป */
+    margin: 0 auto;
+    padding: 10px;
+
+     position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: #fff;
       display: flex;
       flex-direction: column;
-      align-items: center;  
       justify-content: center;
-      height: 100%;
-      margin: 0;
-    }
+      align-items: center;
+      z-index: 9999;
+  }
 
-    .sdwwrasdew {
-      font-size: 20px; 
-      font-weight: 100;
-    }
+  .tranasfeontainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px; /* ลด gap เพื่อให้เหมาะกับหน้าจอมือถือ */
+    width: 100%;
+  }
 
-    .profionatainer { 
-      position: relative; 
-      width: 200px; 
-      height: 200px; 
-      display: flex; 
-      justify-content: center; 
-      align-items: center; 
-      margin-bottom: 20px; 
-    }
-    
-    .circzxsevg { 
-      position: absolute; 
-      width: 100%; 
-      height: 100%; 
-      transform: rotate(-90deg); 
-    }
+  .nasweasode {
+    border: 2px solid #333;
+    padding: 5px;
+    border-radius: 8px;
+    background: #f9f9f9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1; /* ให้ทั้งสองฝั่งแบ่งพื้นที่เท่ากัน */
+    min-width: 0; /* ป้องกันเนื้อหาภายในดันกล่องให้ล้น */
+  }
+  /* กล่องสำหรับจัดวางภาพที่โหลดมา */
+  .imageafsedery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 0px;
+    justify-content: center;
+    width: 100%;
+  }
 
-    .circleaqwerbg { 
-      fill: none; 
-      stroke: #ddd; 
-      stroke-width: 10; 
-    }
+  .imageafsedery img {
+    width: 100%; /* ปรับขนาดภาพเล็กลงเล็กน้อยเพื่อให้ลงตัวบนมือถือ */
+    height: 80px;
+    object-fit: cover;
+    border-radius: 4px;
+    /* box-shadow: 0 2px 5px rgba(0,0,0,0.2); */
+  }
 
-    .imaswertox { 
-        width: 170px; 
-        height: 170px; 
-        background: #ffdd0050; 
-        padding: 5px;
-        border-radius: 50%; 
-        z-index: 1; 
+  .datasewrene {
+    flex-shrink: 0; /* ป้องกันเส้นโดนบีบจนหาย */
+    width: 60px; /* ลดความกว้างเส้นเพื่อประหยัดพื้นที่บนมือถือ */
+    height: 4px;
+    background: #ddd;
+    position: relative;
+    overflow: hidden; /* ป้องกัน packet วิ่งทะลุออกนอกเส้น */
+    border-radius: 2px;
+  }
+
+  .loadixdswreext {
+    color: #666;
+    font-size: 14px;
+    text-align: center;
+  }
+
+  /* ก้อนข้อมูลวิ่งจากซ้ายไปขวา */
+  .dataswrdweac {
+    position: absolute;
+    top: 0;
+    left: -30%;
+    width: 30%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, #004aad, #ffffff);
+    border-radius: 2px;
+    animation: transfer 1.2s infinite linear;
+  }
+
+  /* Animation เคลื่อนที่ข้ามเส้น */
+  @keyframes transfer {
+    0% {
+      left: -30%;
     }
-.imgsdewsdewox {
-    display: flex; 
-    align-items: center;  
-    gap: 10px;     
-    font-size: 15px; 
-    font-weight: 700;
-    color: #fff;
-}
+    100% {
+      left: 100%;
+    }
+  }
 </style>
- 
+
 <body>
 
-  <div id="loading">
-   <div class="aderaswefrcseer">
-    <div class="profionatainer">
-        <svg class="circzxsevg">
-            <circle class="circleaqwerbg" cx="100" cy="100" r="90"></circle>
-        </svg>
-        <img src="https://lh3.googleusercontent.com/d/1LnEq91qsDH2KxQ6BbwQd14OhlWVxPmjh" class="imaswertox">
+<div class="loadewarapoper" id="loading">
+  <div class="tranasfeontainer">
+    <div class="nasweasode">
+      <span>ดีลดีคาร์</span>
+      <div class="imageafsedery">
+        <img src="https://lh3.googleusercontent.com/d/1LnEq91qsDH2KxQ6BbwQd14OhlWVxPmjh">
+      </div>
     </div>
 
-      <div class="imgsdewsdewox">
-        <span class="mdi mdi-loading mdi-spin sdwwrasdew"></span>
-        <div>กรุณารอสักครู่....</div>
-      </div>
+    <div class="datasewrene">
+      <div class="dataswrdweac"></div>
+    </div>
+
+    <div class="nasweasode">
+      <span>ดีลดีคาร์</span>
+      <div class="imageafsedery" id="serverGallery"></div>
     </div>
   </div>
 
+  <div class="loadixdswreext"><span class="mdi mdi-loading mdi-spin"></span> กำลังถ่ายโอนข้อมูลไปยังปลายทาง...</div>
+</div>
+
+  
   <iframe id="myFrame" src=""></iframe>
 
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      // 1. ดึง URL จาก meta tag og:image
+      const ogImageMeta = document.querySelector('meta[property="og:image"]');
+      
+      if (ogImageMeta) {
+        // ใช้ .trim() เพื่อตัดช่องว่างหน้า URL ออก
+        const imageUrl = ogImageMeta.getAttribute("content").trim();
+        const gallery = document.getElementById("serverGallery");
+
+        // ตัวอย่าง: หากต้องการแสดงภาพเดียวกันหลายภาพ (เช่น 3 ภาพ)
+        const totalImages = 1; 
+
+        for (let i = 0; i < totalImages; i++) {
+          const img = document.createElement("img");
+          img.src = imageUrl;
+          img.alt = `Server Image ${i + 1}`;
+          
+          // ใส่ภาพลงไปในส่วนของ SERVER
+          gallery.appendChild(img);
+        }
+      }
+    });
+  </script>
+  
 <script>
   (function() {
     let fullPath = window.location.pathname + window.location.search;
