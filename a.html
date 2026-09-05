@@ -42,81 +42,90 @@
 
 <style>
   .loadewarapoper {
-    gap: 20px;
     font-family: sans-serif;
-    width: 100%;
-    max-width: 600px; /* จำกัดความกว้างสูงสุดไม่ให้กว้างเกินไป */
-    margin: 0 auto;
-    padding: 10px;
-
-     position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background-color: #fff;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      z-index: 9999;
+    box-sizing: border-box; /* สำคัญเพื่อไม่ให้ padding ดันขนาดเกิน 100vw */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    padding: 15px;
+    gap: 20px;
   }
 
   .tranasfeontainer {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 15px; /* ลด gap เพื่อให้เหมาะกับหน้าจอมือถือ */
+    gap: 10px; 
     width: 100%;
+    max-width: 450px; /* จำกัดความกว้างไม่ให้ยืดกว้างเกินไปบนจอใหญ่ */
+    box-sizing: border-box;
   }
 
   .nasweasode {
     border: 2px solid #333;
-    width: 100%;
-    padding: 5px;
+    padding: 8px 6px;
     border-radius: 8px;
     background: #f9f9f9;
     display: flex;
     flex-direction: column;
     align-items: center;
-    flex: 1; /* ให้ทั้งสองฝั่งแบ่งพื้นที่เท่ากัน */
-    min-width: 0; /* ป้องกันเนื้อหาภายในดันกล่องให้ล้น */
+    flex: 1; 
+    min-width: 0; /* บังคับให้ flex item ยอมหดตัวและไม่ดันล้น */
+    box-sizing: border-box;
   }
-  /* กล่องสำหรับจัดวางภาพที่โหลดมา */
+
+  .nasweasode span {
+    font-size: 13px;
+    font-weight: bold;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+  }
+
   .imageafsedery {
     display: flex;
     flex-wrap: wrap;
-    gap: 6px;
-    margin-top: 0px;
+    gap: 4px;
+    margin-top: 6px;
     justify-content: center;
     width: 100%;
+    min-width: 0;
   }
 
   .imageafsedery img {
-    width: 100%; /* ปรับขนาดภาพเล็กลงเล็กน้อยเพื่อให้ลงตัวบนมือถือ */
-    height: 80px;
+    width: 100%; 
+    max-width: 50px; /* บังคับความกว้างสูงสุดของรูปไม่ให้ดันกล่อง */
+    height: 50px;
     object-fit: cover;
     border-radius: 4px;
-    /* box-shadow: 0 2px 5px rgba(0,0,0,0.2); */
   }
 
   .datasewrene {
-    flex-shrink: 0; /* ป้องกันเส้นโดนบีบจนหาย */
-    width: 60px; /* ลดความกว้างเส้นเพื่อประหยัดพื้นที่บนมือถือ */
+    flex-shrink: 0; 
+    width: 40px; /* ลดความกว้างเส้นเชื่อมลงให้อยู่ในสัดส่วนที่พอดี */
     height: 4px;
     background: #ddd;
     position: relative;
-    overflow: hidden; /* ป้องกัน packet วิ่งทะลุออกนอกเส้น */
+    overflow: hidden; 
     border-radius: 2px;
   }
 
   .loadixdswreext {
     color: #666;
-    font-size: 14px;
+    font-size: 13px;
     text-align: center;
+    padding: 0 10px;
   }
 
-  /* ก้อนข้อมูลวิ่งจากซ้ายไปขวา */
   .dataswrdweac {
     position: absolute;
     top: 0;
@@ -128,7 +137,6 @@
     animation: transfer 1.2s infinite linear;
   }
 
-  /* Animation เคลื่อนที่ข้ามเส้น */
   @keyframes transfer {
     0% {
       left: -30%;
